@@ -1,0 +1,44 @@
+{
+  "name": "hashsome",
+  "version": "0.1.0",
+  "description": "Get a crypto hash (md5, sha, etc.) for some files matching a pattern in a directory, or a group of directories.",
+  "main": "hashsome.js",
+  "scripts": {
+    "lint": "jshint *.js*",
+    "clean": "git clean -dfx tests/fixtures; git checkout -- tests/fixtures",
+    "pretest": "npm run clean",
+    "test": "node tests",
+    "precover": "npm run clean",
+    "cover": "istanbul cover --dir artifacts/coverage tests"
+  },
+  "author": {
+    "name": "Isao Yagi",
+    "email": "isao@yahoo-inc.com"
+  },
+  "license": "BSD",
+  "dependencies": {
+    "rimraf": "~2.2.2",
+    "scanfs": "~0.1.1"
+  },
+  "devDependencies": {
+    "tap": "~0.4.4"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/isao/hashsome.git"
+  },
+  "bugs": {
+    "url": "https://github.com/isao/hashsome/issues"
+  },
+  "readme": "# readme\n\nA library to get a cryptographic hash (md5, sha, etc.) of some files in a directory, or hashes for each of a group of directories. Directories with hashes can get renamed on the filesystem.\n\n## hashsome.hashdirs(dirs, [options], callback)\n\nGiven an array of directory pathnames, get the hash of all files matching a set of patterns in each directory. Each directory can then be renamed with that hash.\n\nArguments and options are:\n\n- `dirs` array of string pathnames of directories to hash and possibly rename.\n- `options` optional object with the following properties\n    - `algo` string - default is `\"md5\"`. For other valid values see `crypto.getHashes()`.\n    - `select` array of string or regex patterns of file/pathnames to hash with `algo` - default is `[/-min\\.(css|js)$/, /\\.(gif|jpe?g|png|swf)$/, /\\/lang\\/.+\\.js$/]`\n    - `ignore` - array of string or regex patterns of pathnames to ignore - default is `[]`\n    - `namer` - function for determining a new module directory pathname. Return value is the renamed directory path. Parameters are the original directory path and hash string - default is `function namer(pathname, hash) { return pathname + '@' + hash.slice(0, 6); }`\n    - `exec` - function for renaming the module directory, or false to not rename anything. Function signature is same as `fs.rename`. The default is an internal function that deletes the destination directory if it exists before calling `fs.rename`.\n- `callback` - function that is called with two arguments, `err`, `results`.\n\nExample:\n\n    var hashdirs = require('hashsome'),\n        dirs = [\n            'tests/fixtures/demo/smorgasbord',\n            'tests/fixtures/demo/binder-index',\n            'tests/fixtures/demo/demo-templates-index'\n        ];\n\n    hashdirs(dirs, function(err, results) {\n        console.log(err || results);\n    });\n\nResults look like:\n\n    {\n        'binder-index': 'tests/fixtures/demo/binder-index@eba6ac',\n        'demo-templates-index': 'tests/fixtures/demo/demo-templates-index@145385',\n        'smorgasbord': 'tests/fixtures/demo/smorgasbord@85be6a'\n    }\n\nIf the supplied pathnames in `dirs` are relative to `process.cwd()`, the output paths are relative too. The order of the results are not the necessarily the same as the input array order.\n\nBy default, the directories in `dirs` are renamed with their hash, as described by the callback results. This can be disabled by setting options.exec to `false`.\n\n## hashsome.hashbuild(dir, [options], callback)\n\nSame as `hashsome` except first argument is a single (build) directory pathname. Each subdirectory within this build directory (matching `/^[\\w\\-]+$/`, i.e. a YUI module name) will become an argument to `hashsome` above, and get files within them hashed in the same manner. Each subdirectory can then be renamed with that hash.\n\nArguments and options are identical to `hashsome` above.\n\nExample:\n\n    var hashBuildDir = require('hashsome').buildDir;\n\n    hashBuildDir('tests/fixtures/demo', function(err, results) {\n        console.log(err || results);\n    });\n\nResults look like:\n\n    {\n        'alerts-model': 'tests/fixtures/demo/alerts-model@569028',\n        'binder-index': 'tests/fixtures/demo/binder-index@eba6ac',\n        'demo-templates-bar': 'tests/fixtures/demo/demo-templates-bar@e7ce4a',\n        'demo-templates-index': 'tests/fixtures/demo/demo-templates-index@145385',\n        'demo-templates-foo': 'tests/fixtures/demo/demo-templates-foo@539f25',\n        'loader-demo': 'tests/fixtures/demo/loader-demo@c3c4ff',\n        'smorgasbord': 'tests/fixtures/demo/smorgasbord@85be6a'\n    }\n\n## hashdir(dir, options, callback)\n\nGet the hash of some files in `dir`. Invoking this function does not rename anything.\n\nArguments are:\n\n- `dir` string pathname to the build directory, i.e. tests/fixtures/demo\n- `options` optional object with the following properties\n    - `algo` string - default is `\"md5\"`. For other valid values see `crypto.getHashes()`.\n    - `select` array of string or regex patterns of file/pathnames to hash with `algo` - default is `[/-min\\.(css|js)$/, /\\.(gif|jpe?g|png|swf)$/, /\\/lang\\/.+\\.js$/]`\n    - `ignore` - array of string or regex patterns of pathnames to ignore - default is `[]`\n- `callback` - function - callback gets two arguments, `err`, `results`.\n\nExample:\n\n    var hashdir = require('hashsome/hashdir');\n\n    hashdir('tests/fixtures/smorgasbord', function(err, results) {\n        console.log(err || results);\n    });\n\nResults look like:\n\n    {\n        dir: 'tests/fixtures/smorgasbord',\n        hash: '85be6ad3c99a69ba4d3494015f0cb1ad',\n        hashes: {\n            'tests/fixtures/smorgasbord/csswithassets-min.css': '03f717b9dc98396f34957a60ce5780c1',\n            'tests/fixtures/smorgasbord/yql2-min.js': 'f998e5b0f0b898fce665f5b914c41b76',\n            'tests/fixtures/smorgasbord/assets/foo.png': '4e310d255ad7e43553366c280e97917d',\n            'tests/fixtures/smorgasbord/assets/img.png': '1909c4d75ebc09dbdeafc5ce238aefc9',\n            'tests/fixtures/smorgasbord/lang/calendar-base.js': '5d9769e39fca1c9b5c26e6693171924b',\n            'tests/fixtures/smorgasbord/lang/calendar-base_de.js': '6ab41800c890b098d702ffc1bb57ae77',\n            'tests/fixtures/smorgasbord/lang/calendar-base_en.js': 'a200bedb2e9b487fb5223eff7a730efd',\n            'tests/fixtures/smorgasbord/lang/calendar-base_fr.js': '061634dcaba4c5e76cab7ceb78e94557',\n            'tests/fixtures/smorgasbord/lang/calendar-base_ja.js': 'f02c364d57d6b476a212e7225f5b5ca5',\n            'tests/fixtures/smorgasbord/lang/calendar-base_nb-NO.js': '6eb6944b47775ad5f7d22c420ba516c5',\n            'tests/fixtures/smorgasbord/lang/calendar-base_pt-BR.js': '881020dae7db9875d2db5cc5b1324e55',\n            'tests/fixtures/smorgasbord/lang/calendar-base_ru.js': '8667f8bc9bf0e1fdccf7d8b350b4b758',\n            'tests/fixtures/smorgasbord/lang/calendar-base_zh-HANT-TW.js': 'b68311a9f6e554ce8c77531f5a5f2e84'\n        },\n        invalid: {\n            'tests/fixtures/smorgasbord/symlink': 'ENOENT'\n        }\n    }\n\nSee also `./tests`.\n\n## license\n\nThis software is free to use under the Yahoo! Inc. BSD license.\nSee the [LICENSE file][] for license text and copyright information.\n\n[LICENSE file]: https://github.com/isao/hashsome/blob/master/LICENSE.txt\n\n",
+  "readmeFilename": "README.md",
+  "_id": "hashsome@0.1.0",
+  "dist": {
+    "shasum": "1ba308d4a68caa86862679fd50f879ef9ed384a1"
+  },
+  "_from": "hashsome@",
+  "_resolved": "https://registry.npmjs.org/hashsome/-/hashsome-0.1.0.tgz"
+}

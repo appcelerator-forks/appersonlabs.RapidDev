@@ -1,0 +1,23 @@
+{
+  "name": "rapiddev",
+  "version": "0.1.7",
+  "description": "A plugin & module for Titanium mobile to allow for instant reload of apps on JS / asset changes for faster app development.",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "rapiddev install"
+  },
+  "keywords": [
+    "titanium"
+  ],
+  "bin": {
+    "rapiddev": "./index.js",
+    "rd": "./index.js"
+  },
+  "author": "Matt Apperson",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "commander": "~2.1.0",
+    "execSync": "~1.0.1-pre",
+    "pkginfo": "~0.3.0"
+  }
+}

@@ -1,0 +1,708 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		24416B8111C4CA220047AFDD /* Build & Test */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 24416B8A11C4CA520047AFDD /* Build configuration list for PBXAggregateTarget "Build & Test" */;
+			buildPhases = (
+				24416B8011C4CA220047AFDD /* ShellScript */,
+			);
+			dependencies = (
+				24416B8511C4CA280047AFDD /* PBXTargetDependency */,
+			);
+			name = "Build & Test";
+			productName = "Build & test";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		24DD6CF91134B3F500162E58 /* ComAppersonlabsRapiddevModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DD6CF71134B3F500162E58 /* ComAppersonlabsRapiddevModule.h */; };
+		24DD6CFA1134B3F500162E58 /* ComAppersonlabsRapiddevModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DD6CF81134B3F500162E58 /* ComAppersonlabsRapiddevModule.m */; };
+		24DE9E1111C5FE74003F90F6 /* ComAppersonlabsRapiddevModuleAssets.h in Headers */ = {isa = PBXBuildFile; fileRef = 24DE9E0F11C5FE74003F90F6 /* ComAppersonlabsRapiddevModuleAssets.h */; };
+		24DE9E1211C5FE74003F90F6 /* ComAppersonlabsRapiddevModuleAssets.m in Sources */ = {isa = PBXBuildFile; fileRef = 24DE9E1011C5FE74003F90F6 /* ComAppersonlabsRapiddevModuleAssets.m */; };
+		AA747D9F0F9514B9006C5449 /* ComAppersonlabsRapiddev_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ComAppersonlabsRapiddev_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		D903A5BF187A52F000FD2622 /* NSDictionary+StringForKey.h in Headers */ = {isa = PBXBuildFile; fileRef = D903A5B3187A52E000FD2622 /* NSDictionary+StringForKey.h */; };
+		D903A5C0187A52F300FD2622 /* NSDictionary+StringForKey.m in Sources */ = {isa = PBXBuildFile; fileRef = D903A5B4187A52E000FD2622 /* NSDictionary+StringForKey.m */; };
+		D903A5C7187B7B0C00FD2622 /* TiApp+globalSocket.h in Headers */ = {isa = PBXBuildFile; fileRef = D903A5C5187B7B0C00FD2622 /* TiApp+globalSocket.h */; };
+		D903A5C8187B7B0C00FD2622 /* TiApp+globalSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D903A5C6187B7B0C00FD2622 /* TiApp+globalSocket.m */; };
+		D903A5CB187BA2C900FD2622 /* TiUtils+HackedAsset.h in Headers */ = {isa = PBXBuildFile; fileRef = D903A5C9187BA2C900FD2622 /* TiUtils+HackedAsset.h */; };
+		D903A5CC187BA2C900FD2622 /* TiUtils+HackedAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = D903A5CA187BA2C900FD2622 /* TiUtils+HackedAsset.m */; };
+		D903A5D31881E9ED00FD2622 /* AppModule+CleanerRestart.h in Headers */ = {isa = PBXBuildFile; fileRef = D903A5D11881E9ED00FD2622 /* AppModule+CleanerRestart.h */; };
+		D903A5D41881E9ED00FD2622 /* AppModule+CleanerRestart.m in Sources */ = {isa = PBXBuildFile; fileRef = D903A5D21881E9ED00FD2622 /* AppModule+CleanerRestart.m */; };
+		D903EDD31868ED8300DCB244 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D903EDD21868D1F900DCB244 /* SRWebSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D903EDD41868ED8D00DCB244 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = D903EDCC1868D1F900DCB244 /* base64.c */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D903EDD51868ED9400DCB244 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = D903EDCF1868D1F900DCB244 /* NSData+SRB64Additions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D9407F8718745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.h in Headers */ = {isa = PBXBuildFile; fileRef = D9407F8518745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.h */; };
+		D9407F8818745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.m in Sources */ = {isa = PBXBuildFile; fileRef = D9407F8618745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.m */; };
+		D9407F8918746F0C0056B763 /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = D9407F481873B7C60056B763 /* JRSwizzle.h */; };
+		D9407F8A18746F190056B763 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = D9407F491873B7C60056B763 /* JRSwizzle.m */; };
+		D9407F8F1874BC9F0056B763 /* NSString+Base64Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = D9407F8D1874BC9F0056B763 /* NSString+Base64Additions.h */; };
+		D9407F901874BC9F0056B763 /* NSString+Base64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = D9407F8E1874BC9F0056B763 /* NSString+Base64Additions.m */; };
+		D9B0E93D186C93D400119875 /* KrollBridge+HackedRequire.h in Headers */ = {isa = PBXBuildFile; fileRef = D9B0E93B186C93D400119875 /* KrollBridge+HackedRequire.h */; };
+		D9B0E93E186C93D400119875 /* KrollBridge+HackedRequire.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B0E93C186C93D400119875 /* KrollBridge+HackedRequire.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		24416B8411C4CA280047AFDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = rapid;
+		};
+		D9407F681873B7C60056B763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9407F571873B7C60056B763 /* JRSwizzleTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 792608A30CF3F88400A93D12;
+			remoteInfo = 10.3;
+		};
+		D9407F6A1873B7C60056B763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9407F571873B7C60056B763 /* JRSwizzleTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 792607C30CF3F05800A93D12;
+			remoteInfo = 10.4;
+		};
+		D9407F6C1873B7C60056B763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9407F571873B7C60056B763 /* JRSwizzleTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DD76FA10486AA7600D96B5E;
+			remoteInfo = "10.5 32-bit";
+		};
+		D9407F6E1873B7C60056B763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9407F571873B7C60056B763 /* JRSwizzleTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 79F3DBEE0CF33E6000733703;
+			remoteInfo = "10.5 64-bit";
+		};
+		D9407F701873B7C60056B763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9407F571873B7C60056B763 /* JRSwizzleTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7926093F0CF3F98E00A93D12;
+			remoteInfo = "10.3 Test";
+		};
+		D9407F721873B7C60056B763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9407F571873B7C60056B763 /* JRSwizzleTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 792608550CF3F24400A93D12;
+			remoteInfo = "10.4 Test";
+		};
+		D9407F741873B7C60056B763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9407F571873B7C60056B763 /* JRSwizzleTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 79F3DC150CF33F5000733703;
+			remoteInfo = "10.5 32-bit Test";
+		};
+		D9407F761873B7C60056B763 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9407F571873B7C60056B763 /* JRSwizzleTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 79F3DC2D0CF341EC00733703;
+			remoteInfo = "10.5 64-bit Test";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		24DD6CF71134B3F500162E58 /* ComAppersonlabsRapiddevModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAppersonlabsRapiddevModule.h; path = Classes/ComAppersonlabsRapiddevModule.h; sourceTree = "<group>"; };
+		24DD6CF81134B3F500162E58 /* ComAppersonlabsRapiddevModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAppersonlabsRapiddevModule.m; path = Classes/ComAppersonlabsRapiddevModule.m; sourceTree = "<group>"; };
+		24DD6D1B1134B66800162E58 /* titanium.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = titanium.xcconfig; sourceTree = "<group>"; };
+		24DE9E0F11C5FE74003F90F6 /* ComAppersonlabsRapiddevModuleAssets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComAppersonlabsRapiddevModuleAssets.h; path = Classes/ComAppersonlabsRapiddevModuleAssets.h; sourceTree = "<group>"; };
+		24DE9E1011C5FE74003F90F6 /* ComAppersonlabsRapiddevModuleAssets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComAppersonlabsRapiddevModuleAssets.m; path = Classes/ComAppersonlabsRapiddevModuleAssets.m; sourceTree = "<group>"; };
+		AA747D9E0F9514B9006C5449 /* ComAppersonlabsRapiddev_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComAppersonlabsRapiddev_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2AAC07E0554694100DB518D /* libComAppersonlabsRapiddev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libComAppersonlabsRapiddev.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D903A5B3187A52E000FD2622 /* NSDictionary+StringForKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+StringForKey.h"; sourceTree = "<group>"; };
+		D903A5B4187A52E000FD2622 /* NSDictionary+StringForKey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+StringForKey.m"; sourceTree = "<group>"; };
+		D903A5B5187A52E000FD2622 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		D903A5C5187B7B0C00FD2622 /* TiApp+globalSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiApp+globalSocket.h"; path = "Classes/TiApp+globalSocket.h"; sourceTree = "<group>"; };
+		D903A5C6187B7B0C00FD2622 /* TiApp+globalSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiApp+globalSocket.m"; path = "Classes/TiApp+globalSocket.m"; sourceTree = "<group>"; };
+		D903A5C9187BA2C900FD2622 /* TiUtils+HackedAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiUtils+HackedAsset.h"; path = "Classes/TiUtils+HackedAsset.h"; sourceTree = "<group>"; };
+		D903A5CA187BA2C900FD2622 /* TiUtils+HackedAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiUtils+HackedAsset.m"; path = "Classes/TiUtils+HackedAsset.m"; sourceTree = "<group>"; };
+		D903A5D11881E9ED00FD2622 /* AppModule+CleanerRestart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppModule+CleanerRestart.h"; sourceTree = "<group>"; };
+		D903A5D21881E9ED00FD2622 /* AppModule+CleanerRestart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppModule+CleanerRestart.m"; sourceTree = "<group>"; };
+		D903EDCC1868D1F900DCB244 /* base64.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		D903EDCD1868D1F900DCB244 /* base64.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		D903EDCE1868D1F900DCB244 /* NSData+SRB64Additions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+SRB64Additions.h"; sourceTree = "<group>"; };
+		D903EDCF1868D1F900DCB244 /* NSData+SRB64Additions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+SRB64Additions.m"; sourceTree = "<group>"; };
+		D903EDD01868D1F900DCB244 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
+		D903EDD11868D1F900DCB244 /* SRWebSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
+		D903EDD21868D1F900DCB244 /* SRWebSocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		D9407F481873B7C60056B763 /* JRSwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
+		D9407F491873B7C60056B763 /* JRSwizzle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
+		D9407F4B1873B7C60056B763 /* 10.3 Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "10.3 Test-Info.plist"; sourceTree = "<group>"; };
+		D9407F4C1873B7C60056B763 /* 10.4 Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "10.4 Test-Info.plist"; sourceTree = "<group>"; };
+		D9407F4D1873B7C60056B763 /* 10.5 32-bit Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "10.5 32-bit Test-Info.plist"; sourceTree = "<group>"; };
+		D9407F4E1873B7C60056B763 /* 10.5 64-bit Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "10.5 64-bit Test-Info.plist"; sourceTree = "<group>"; };
+		D9407F4F1873B7C60056B763 /* AppleSwizzleTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppleSwizzleTest.h; sourceTree = "<group>"; };
+		D9407F501873B7C60056B763 /* AppleSwizzleTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppleSwizzleTest.m; sourceTree = "<group>"; };
+		D9407F511873B7C60056B763 /* BallardSwizzleTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BallardSwizzleTest.h; sourceTree = "<group>"; };
+		D9407F521873B7C60056B763 /* BallardSwizzleTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BallardSwizzleTest.m; sourceTree = "<group>"; };
+		D9407F531873B7C60056B763 /* ClassicSwizzleTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassicSwizzleTest.h; sourceTree = "<group>"; };
+		D9407F541873B7C60056B763 /* ClassicSwizzleTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassicSwizzleTest.m; sourceTree = "<group>"; };
+		D9407F551873B7C60056B763 /* JRSwizzleTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRSwizzleTest.h; sourceTree = "<group>"; };
+		D9407F561873B7C60056B763 /* JRSwizzleTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JRSwizzleTest.m; sourceTree = "<group>"; };
+		D9407F571873B7C60056B763 /* JRSwizzleTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = JRSwizzleTest.xcodeproj; sourceTree = "<group>"; };
+		D9407F5A1873B7C60056B763 /* JRSwizzleTest_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRSwizzleTest_Prefix.pch; sourceTree = "<group>"; };
+		D9407F5B1873B7C60056B763 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D9407F5C1873B7C60056B763 /* MethodSwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MethodSwizzle.h; sourceTree = "<group>"; };
+		D9407F5D1873B7C60056B763 /* MethodSwizzle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MethodSwizzle.m; sourceTree = "<group>"; };
+		D9407F5E1873B7C60056B763 /* README.markdown */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		D9407F8518745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TiProxy+HackedValueForUndefinedKey.h"; path = "Classes/TiProxy+HackedValueForUndefinedKey.h"; sourceTree = "<group>"; };
+		D9407F8618745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TiProxy+HackedValueForUndefinedKey.m"; path = "Classes/TiProxy+HackedValueForUndefinedKey.m"; sourceTree = "<group>"; };
+		D9407F8D1874BC9F0056B763 /* NSString+Base64Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Base64Additions.h"; path = "Classes/NSString+Base64Additions.h"; sourceTree = "<group>"; };
+		D9407F8E1874BC9F0056B763 /* NSString+Base64Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Base64Additions.m"; path = "Classes/NSString+Base64Additions.m"; sourceTree = "<group>"; };
+		D9B0E93B186C93D400119875 /* KrollBridge+HackedRequire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "KrollBridge+HackedRequire.h"; path = "Classes/KrollBridge+HackedRequire.h"; sourceTree = "<group>"; };
+		D9B0E93C186C93D400119875 /* KrollBridge+HackedRequire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "KrollBridge+HackedRequire.m"; path = "Classes/KrollBridge+HackedRequire.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libComAppersonlabsRapiddev.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* rapid */ = {
+			isa = PBXGroup;
+			children = (
+				D903A5B2187A52E000FD2622 /* NSDictionary-StringForKey */,
+				D9407F471873B7C60056B763 /* JRSwizzle */,
+				D903EDCB1868D1F900DCB244 /* SocketRocket */,
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = rapid;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				24DE9E0F11C5FE74003F90F6 /* ComAppersonlabsRapiddevModuleAssets.h */,
+				24DE9E1011C5FE74003F90F6 /* ComAppersonlabsRapiddevModuleAssets.m */,
+				24DD6CF71134B3F500162E58 /* ComAppersonlabsRapiddevModule.h */,
+				24DD6CF81134B3F500162E58 /* ComAppersonlabsRapiddevModule.m */,
+				D9B0E93B186C93D400119875 /* KrollBridge+HackedRequire.h */,
+				D9B0E93C186C93D400119875 /* KrollBridge+HackedRequire.m */,
+				D9407F8518745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.h */,
+				D9407F8618745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.m */,
+				D9407F8D1874BC9F0056B763 /* NSString+Base64Additions.h */,
+				D9407F8E1874BC9F0056B763 /* NSString+Base64Additions.m */,
+				D903A5C5187B7B0C00FD2622 /* TiApp+globalSocket.h */,
+				D903A5C6187B7B0C00FD2622 /* TiApp+globalSocket.m */,
+				D903A5C9187BA2C900FD2622 /* TiUtils+HackedAsset.h */,
+				D903A5CA187BA2C900FD2622 /* TiUtils+HackedAsset.m */,
+				D903A5D11881E9ED00FD2622 /* AppModule+CleanerRestart.h */,
+				D903A5D21881E9ED00FD2622 /* AppModule+CleanerRestart.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* ComAppersonlabsRapiddev_Prefix.pch */,
+				24DD6D1B1134B66800162E58 /* titanium.xcconfig */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		D903A5B2187A52E000FD2622 /* NSDictionary-StringForKey */ = {
+			isa = PBXGroup;
+			children = (
+				D903A5B3187A52E000FD2622 /* NSDictionary+StringForKey.h */,
+				D903A5B4187A52E000FD2622 /* NSDictionary+StringForKey.m */,
+				D903A5B5187A52E000FD2622 /* README.md */,
+			);
+			path = "NSDictionary-StringForKey";
+			sourceTree = "<group>";
+		};
+		D903EDCB1868D1F900DCB244 /* SocketRocket */ = {
+			isa = PBXGroup;
+			children = (
+				D903EDCC1868D1F900DCB244 /* base64.c */,
+				D903EDCD1868D1F900DCB244 /* base64.h */,
+				D903EDCE1868D1F900DCB244 /* NSData+SRB64Additions.h */,
+				D903EDCF1868D1F900DCB244 /* NSData+SRB64Additions.m */,
+				D903EDD01868D1F900DCB244 /* SocketRocket-Prefix.pch */,
+				D903EDD11868D1F900DCB244 /* SRWebSocket.h */,
+				D903EDD21868D1F900DCB244 /* SRWebSocket.m */,
+			);
+			name = SocketRocket;
+			path = SocketRocket/SocketRocket;
+			sourceTree = "<group>";
+		};
+		D9407F471873B7C60056B763 /* JRSwizzle */ = {
+			isa = PBXGroup;
+			children = (
+				D9407F481873B7C60056B763 /* JRSwizzle.h */,
+				D9407F491873B7C60056B763 /* JRSwizzle.m */,
+				D9407F4A1873B7C60056B763 /* JRSwizzleTest */,
+				D9407F5E1873B7C60056B763 /* README.markdown */,
+			);
+			path = JRSwizzle;
+			sourceTree = "<group>";
+		};
+		D9407F4A1873B7C60056B763 /* JRSwizzleTest */ = {
+			isa = PBXGroup;
+			children = (
+				D9407F4B1873B7C60056B763 /* 10.3 Test-Info.plist */,
+				D9407F4C1873B7C60056B763 /* 10.4 Test-Info.plist */,
+				D9407F4D1873B7C60056B763 /* 10.5 32-bit Test-Info.plist */,
+				D9407F4E1873B7C60056B763 /* 10.5 64-bit Test-Info.plist */,
+				D9407F4F1873B7C60056B763 /* AppleSwizzleTest.h */,
+				D9407F501873B7C60056B763 /* AppleSwizzleTest.m */,
+				D9407F511873B7C60056B763 /* BallardSwizzleTest.h */,
+				D9407F521873B7C60056B763 /* BallardSwizzleTest.m */,
+				D9407F531873B7C60056B763 /* ClassicSwizzleTest.h */,
+				D9407F541873B7C60056B763 /* ClassicSwizzleTest.m */,
+				D9407F551873B7C60056B763 /* JRSwizzleTest.h */,
+				D9407F561873B7C60056B763 /* JRSwizzleTest.m */,
+				D9407F571873B7C60056B763 /* JRSwizzleTest.xcodeproj */,
+				D9407F5A1873B7C60056B763 /* JRSwizzleTest_Prefix.pch */,
+				D9407F5B1873B7C60056B763 /* main.m */,
+				D9407F5C1873B7C60056B763 /* MethodSwizzle.h */,
+				D9407F5D1873B7C60056B763 /* MethodSwizzle.m */,
+			);
+			path = JRSwizzleTest;
+			sourceTree = "<group>";
+		};
+		D9407F581873B7C60056B763 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9407F691873B7C60056B763 /* JRSwizzleTest_1030 */,
+				D9407F6B1873B7C60056B763 /* JRSwizzleTest_1040 */,
+				D9407F6D1873B7C60056B763 /* JRSwizzleTest_1050_32 */,
+				D9407F6F1873B7C60056B763 /* JRSwizzleTest_1050_64 */,
+				D9407F711873B7C60056B763 /* 10.3 Test.octest */,
+				D9407F731873B7C60056B763 /* 10.4 Test.octest */,
+				D9407F751873B7C60056B763 /* 10.5 32-bit Test.octest */,
+				D9407F771873B7C60056B763 /* 10.5 64-bit Test.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9407F8718745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.h in Headers */,
+				AA747D9F0F9514B9006C5449 /* ComAppersonlabsRapiddev_Prefix.pch in Headers */,
+				D903A5D31881E9ED00FD2622 /* AppModule+CleanerRestart.h in Headers */,
+				D903A5BF187A52F000FD2622 /* NSDictionary+StringForKey.h in Headers */,
+				D9407F8918746F0C0056B763 /* JRSwizzle.h in Headers */,
+				D9B0E93D186C93D400119875 /* KrollBridge+HackedRequire.h in Headers */,
+				24DD6CF91134B3F500162E58 /* ComAppersonlabsRapiddevModule.h in Headers */,
+				D9407F8F1874BC9F0056B763 /* NSString+Base64Additions.h in Headers */,
+				D903A5C7187B7B0C00FD2622 /* TiApp+globalSocket.h in Headers */,
+				D903A5CB187BA2C900FD2622 /* TiUtils+HackedAsset.h in Headers */,
+				24DE9E1111C5FE74003F90F6 /* ComAppersonlabsRapiddevModuleAssets.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC07D0554694100DB518D /* rapid */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "rapid" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rapid;
+			productName = rapid;
+			productReference = D2AAC07E0554694100DB518D /* libComAppersonlabsRapiddev.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "rapid" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* rapid */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D9407F581873B7C60056B763 /* Products */;
+					ProjectRef = D9407F571873B7C60056B763 /* JRSwizzleTest.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* rapid */,
+				24416B8111C4CA220047AFDD /* Build & Test */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D9407F691873B7C60056B763 /* JRSwizzleTest_1030 */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = JRSwizzleTest_1030;
+			remoteRef = D9407F681873B7C60056B763 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9407F6B1873B7C60056B763 /* JRSwizzleTest_1040 */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = JRSwizzleTest_1040;
+			remoteRef = D9407F6A1873B7C60056B763 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9407F6D1873B7C60056B763 /* JRSwizzleTest_1050_32 */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = JRSwizzleTest_1050_32;
+			remoteRef = D9407F6C1873B7C60056B763 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9407F6F1873B7C60056B763 /* JRSwizzleTest_1050_64 */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = JRSwizzleTest_1050_64;
+			remoteRef = D9407F6E1873B7C60056B763 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9407F711873B7C60056B763 /* 10.3 Test.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "10.3 Test.octest";
+			remoteRef = D9407F701873B7C60056B763 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9407F731873B7C60056B763 /* 10.4 Test.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "10.4 Test.octest";
+			remoteRef = D9407F721873B7C60056B763 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9407F751873B7C60056B763 /* 10.5 32-bit Test.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "10.5 32-bit Test.octest";
+			remoteRef = D9407F741873B7C60056B763 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D9407F771873B7C60056B763 /* 10.5 64-bit Test.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "10.5 64-bit Test.octest";
+			remoteRef = D9407F761873B7C60056B763 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24416B8011C4CA220047AFDD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here\n\npython \"${TITANIUM_SDK}/titanium.py\" run --dir=\"${PROJECT_DIR}\"\nexit $?\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D903A5C0187A52F300FD2622 /* NSDictionary+StringForKey.m in Sources */,
+				D903A5D41881E9ED00FD2622 /* AppModule+CleanerRestart.m in Sources */,
+				D903A5C8187B7B0C00FD2622 /* TiApp+globalSocket.m in Sources */,
+				D903EDD51868ED9400DCB244 /* NSData+SRB64Additions.m in Sources */,
+				D903EDD41868ED8D00DCB244 /* base64.c in Sources */,
+				D9407F901874BC9F0056B763 /* NSString+Base64Additions.m in Sources */,
+				D903A5CC187BA2C900FD2622 /* TiUtils+HackedAsset.m in Sources */,
+				D903EDD31868ED8300DCB244 /* SRWebSocket.m in Sources */,
+				24DD6CFA1134B3F500162E58 /* ComAppersonlabsRapiddevModule.m in Sources */,
+				D9407F8A18746F190056B763 /* JRSwizzle.m in Sources */,
+				24DE9E1211C5FE74003F90F6 /* ComAppersonlabsRapiddevModuleAssets.m in Sources */,
+				D9407F8818745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.m in Sources */,
+				D9B0E93E186C93D400119875 /* KrollBridge+HackedRequire.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		24416B8511C4CA280047AFDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* rapid */;
+			targetProxy = 24416B8411C4CA280047AFDD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DSTROOT = /tmp/ComAppersonlabsRapiddev.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComAppersonlabsRapiddev_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(TITANIUM_BASE_SDK)/ASI",
+					"$(TITANIUM_BASE_SDK)",
+					"$(TITANIUM_BASE_SDK2)",
+				);
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = (
+					"-DDEBUG",
+					"-DTI_POST_1_2",
+				);
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = ComAppersonlabsRapiddev;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/ComAppersonlabsRapiddev.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComAppersonlabsRapiddev_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(TITANIUM_BASE_SDK)/ASI",
+					"$(TITANIUM_BASE_SDK)",
+					"$(TITANIUM_BASE_SDK2)",
+				);
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "-DTI_POST_1_2";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = ComAppersonlabsRapiddev;
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DSTROOT = /tmp/ComAppersonlabsRapiddev.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComAppersonlabsRapiddev_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				OTHER_CFLAGS = (
+					"-DDEBUG",
+					"-DTI_POST_1_2",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComAppersonlabsRapiddev;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/ComAppersonlabsRapiddev.dst;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ComAppersonlabsRapiddev_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "TI_VERSION=$(TI_VERSION)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
+				GCC_WARN_MISSING_PARENTHESES = NO;
+				GCC_WARN_SHADOW = NO;
+				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_CFLAGS = "-DTI_POST_1_2";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = ComAppersonlabsRapiddev;
+				RUN_CLANG_STATIC_ANALYZER = NO;
+				SDKROOT = iphoneos;
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+		24416B8211C4CA220047AFDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = "Build & test";
+			};
+			name = Debug;
+		};
+		24416B8311C4CA220047AFDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24DD6D1B1134B66800162E58 /* titanium.xcconfig */;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = "Build & test";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "rapid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "rapid" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24416B8A11C4CA520047AFDD /* Build configuration list for PBXAggregateTarget "Build & Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24416B8211C4CA220047AFDD /* Debug */,
+				24416B8311C4CA220047AFDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
