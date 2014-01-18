@@ -1,13 +1,13 @@
 var join = require('path').join,
 	fs = require('fs'),
 	path = require('path'),
-	WebSocketServer = require(__dirname + '/npm_modules/ws').Server,
+	WebSocketServer = require('ws').Server,
 	network = require('os').networkInterfaces(),
-	chokidar = require(__dirname + '/npm_modules/chokidar'),
-	semver = require(__dirname + '/npm_modules/semver'),
-	op = require(__dirname + '/npm_modules/openport'),
-	mime = require(__dirname + '/npm_modules/mime'),
-	hashdir = require(__dirname + '/npm_modules/hashsome/lib/hashdir.js'),
+	chokidar = require('chokidar'),
+	semver = require('semver'),
+	op = require('openport'),
+	mime = require('mime'),
+	hashdir = require('hashsome/lib/hashdir.js'),
 	connectedDevices = 0,
 	hashMap = {},
 	currentHash = '',
@@ -64,6 +64,7 @@ function init(logger, config, cli) {
  */
 function preCompileHook(build, finished) {
 	thisAppID = build.tiapp.id;
+	build.modulesNativeHash = 'rapiddev';
 
 	// Inject the module now...
 	build.nativeLibModules.push({
