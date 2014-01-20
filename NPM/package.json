@@ -1,6 +1,6 @@
 {
   "name": "rapiddev",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "A plugin & module for Titanium mobile to allow for instant reload of apps on JS / asset changes for faster app development.",
   "main": "index.js",
   "scripts": {
