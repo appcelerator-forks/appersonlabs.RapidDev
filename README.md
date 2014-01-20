@@ -38,21 +38,13 @@ To use RapidDev, simply run any titanium 3.2 SDK based application and add the -
 
 We will shortly be adding a studio plugin to make this even easier.
 
-Now to switch back to a non-rapiddev enabled app, simply run: 
-
-```
-  ti clean
-```
-
-Then build your app as you normaly would
+Now to switch back to a non-rapiddev enabled app, build your app as you normaly would without the --rapiddev flag
 
 
 __Some notes and limitations__
 
- * `Ti.include` is NOT yet supported and will work if included with the full path 
-    i.e. slash leading.
  * Only files in the Resources directory will be sent to the device
-   using TiShadow.
+   using RapidDev.
  * Native modules work just fine, you will just need to rebuild the app directly first as iOS does not support adding native code durring runtime
  * Custom fonts will be loaded if placed in the `Resources/fonts`
    directory for iOS only.
