@@ -15,6 +15,18 @@
 
 @implementation ComAppersonlabsRapiddevModule
 
+static NSString* moduleAssets;
++ (NSString*) moduleAssets
+{ @synchronized(self) { return moduleAssets; } }
++ (void) setModuleAssets:(NSString*)val
+{ @synchronized(self) { moduleAssets = val; } }
+
+static NSURL* moduleBaseURL;
++ (NSURL*) moduleBaseURL
+{ @synchronized(self) { return moduleBaseURL; } }
++ (void) setModuleBaseURL:(NSURL*)val
+{ @synchronized(self) { moduleBaseURL = val; } }
+
 #pragma mark Internal
 
 // this is generated for your module, please do not change it
@@ -26,7 +38,8 @@
 // this is generated for your module, please do not change it
 -(NSString*)moduleId
 {
-	return @"com.appersonlabs.rapiddev";
+    ComAppersonlabsRapiddevModule.moduleBaseURL = [self _baseURL];
+    
+    return @"com.appersonlabs.rapiddev";
 }
-
 @end

@@ -3,3 +3,5 @@
 .DS_Store
 
 /NPM/node_modules/
+
+/NPM/npm-debug.log

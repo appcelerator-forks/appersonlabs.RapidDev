@@ -12,6 +12,8 @@
 
 static SRWebSocket * WS = nil;
 static BOOL connected = nil;
+static NSArray* testScripts = nil;
+static int testIndex = nil;
 
 @implementation TiApp (globalSocket)
 
@@ -37,13 +39,14 @@ static BOOL connected = nil;
     return connected;
 }
 
-+ (SRWebSocket *) WS: (SRWebSocket *) socket
+
+
++ (void) WS: (SRWebSocket *) socket
 {
     if(!WS) WS = socket;
 }
-+ (BOOL) connected: (BOOL) state
++ (void) connected: (BOOL) state
 {
     connected = state;
 }
-
 @end

@@ -17,7 +17,9 @@
 
 @interface ComAppersonlabsRapiddevModule : TiModule <NSObject>
 {
-
 }
++(NSString*) moduleAssets;
++(NSURL*) moduleBaseURL;
+
 
 @end

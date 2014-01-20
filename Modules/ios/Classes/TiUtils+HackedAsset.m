@@ -29,7 +29,7 @@
 			leadingSlashRemoved = YES;
 			appurlstr = [appurlstr substringFromIndex:1];
 		}
-
+        
         NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
         
         NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"/Resources"];

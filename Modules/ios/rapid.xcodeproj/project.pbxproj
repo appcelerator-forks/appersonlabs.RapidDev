@@ -39,6 +39,8 @@
 		D903EDD31868ED8300DCB244 /* SRWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = D903EDD21868D1F900DCB244 /* SRWebSocket.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D903EDD41868ED8D00DCB244 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = D903EDCC1868D1F900DCB244 /* base64.c */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		D903EDD51868ED9400DCB244 /* NSData+SRB64Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = D903EDCF1868D1F900DCB244 /* NSData+SRB64Additions.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		D90AD7E41889AE9900AED89C /* TiHost+OverrideAppJS.h in Headers */ = {isa = PBXBuildFile; fileRef = D90AD7E21889AE9900AED89C /* TiHost+OverrideAppJS.h */; };
+		D90AD7E51889AE9900AED89C /* TiHost+OverrideAppJS.m in Sources */ = {isa = PBXBuildFile; fileRef = D90AD7E31889AE9900AED89C /* TiHost+OverrideAppJS.m */; };
 		D9407F8718745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.h in Headers */ = {isa = PBXBuildFile; fileRef = D9407F8518745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.h */; };
 		D9407F8818745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.m in Sources */ = {isa = PBXBuildFile; fileRef = D9407F8618745EAF0056B763 /* TiProxy+HackedValueForUndefinedKey.m */; };
 		D9407F8918746F0C0056B763 /* JRSwizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = D9407F481873B7C60056B763 /* JRSwizzle.h */; };
@@ -140,6 +142,8 @@
 		D903EDD01868D1F900DCB244 /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
 		D903EDD11868D1F900DCB244 /* SRWebSocket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
 		D903EDD21868D1F900DCB244 /* SRWebSocket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		D90AD7E21889AE9900AED89C /* TiHost+OverrideAppJS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TiHost+OverrideAppJS.h"; sourceTree = "<group>"; };
+		D90AD7E31889AE9900AED89C /* TiHost+OverrideAppJS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TiHost+OverrideAppJS.m"; sourceTree = "<group>"; };
 		D9407F481873B7C60056B763 /* JRSwizzle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
 		D9407F491873B7C60056B763 /* JRSwizzle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
 		D9407F4B1873B7C60056B763 /* 10.3 Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "10.3 Test-Info.plist"; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 				D903A5CA187BA2C900FD2622 /* TiUtils+HackedAsset.m */,
 				D903A5D11881E9ED00FD2622 /* AppModule+CleanerRestart.h */,
 				D903A5D21881E9ED00FD2622 /* AppModule+CleanerRestart.m */,
+				D90AD7E21889AE9900AED89C /* TiHost+OverrideAppJS.h */,
+				D90AD7E31889AE9900AED89C /* TiHost+OverrideAppJS.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 				D9B0E93D186C93D400119875 /* KrollBridge+HackedRequire.h in Headers */,
 				24DD6CF91134B3F500162E58 /* ComAppersonlabsRapiddevModule.h in Headers */,
 				D9407F8F1874BC9F0056B763 /* NSString+Base64Additions.h in Headers */,
+				D90AD7E41889AE9900AED89C /* TiHost+OverrideAppJS.h in Headers */,
 				D903A5C7187B7B0C00FD2622 /* TiApp+globalSocket.h in Headers */,
 				D903A5CB187BA2C900FD2622 /* TiUtils+HackedAsset.h in Headers */,
 				24DE9E1111C5FE74003F90F6 /* ComAppersonlabsRapiddevModuleAssets.h in Headers */,
@@ -475,6 +482,7 @@
 				D903A5C0187A52F300FD2622 /* NSDictionary+StringForKey.m in Sources */,
 				D903A5D41881E9ED00FD2622 /* AppModule+CleanerRestart.m in Sources */,
 				D903A5C8187B7B0C00FD2622 /* TiApp+globalSocket.m in Sources */,
+				D90AD7E51889AE9900AED89C /* TiHost+OverrideAppJS.m in Sources */,
 				D903EDD51868ED9400DCB244 /* NSData+SRB64Additions.m in Sources */,
 				D903EDD41868ED8D00DCB244 /* base64.c in Sources */,
 				D9407F901874BC9F0056B763 /* NSString+Base64Additions.m in Sources */,

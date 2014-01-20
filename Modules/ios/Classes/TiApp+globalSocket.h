@@ -8,12 +8,15 @@
 
 #import "TiApp.h"
 #import "SRWebSocket.h"
+#import "JRSwizzle.h"
+#import "ComAppersonlabsRapiddevModule.h"
+
 
 @interface TiApp (globalSocket)
 + (SRWebSocket *) WS;
 + (BOOL) connected;
 
-+ (SRWebSocket *) WS: (SRWebSocket *) socket;
-+ (BOOL) connected: (BOOL) state;
++ (void) WS: (SRWebSocket *) socket;
++ (void) connected: (BOOL) state;
 
 @end
