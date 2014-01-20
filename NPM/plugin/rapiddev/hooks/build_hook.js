@@ -241,10 +241,7 @@ function onFilesystemChange(ev, path) {
 				wss.broadcast('remove-file' + '|' + localPath + '|' + currentHash);
 			} else {
 				var data = fs.readFileSync(path);
-				var mimeType = mime.lookup(path);
-				if (mimeType.indexOf('image') !== -1) {
-					data = new Buffer(data).toString('base64');
-				}
+				data = new Buffer(data).toString('base64');
 
 				wss.broadcast('update-file' + '|' + localPath + '|' + data + '|' + currentHash);
 			}

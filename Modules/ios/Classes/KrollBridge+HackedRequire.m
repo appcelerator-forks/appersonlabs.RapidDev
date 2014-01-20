@@ -51,6 +51,7 @@ static int maxConnect = 10;
 -(void)webSocket:(SRWebSocket*)webSocket didReceiveMessage:(id)data
 {
     if([data isKindOfClass:[NSString class]]) {
+
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSArray* parts = [(NSString *)data componentsSeparatedByString:@"|"];
 
@@ -74,9 +75,8 @@ static int maxConnect = 10;
                 if ([(NSString*)[parts objectAtIndex:2] isBase64Data]) {
                     decodedData = [[NSData alloc] initWithBase64EncodedString:[parts objectAtIndex:2] options:0];
                 } else {
-                    decodedData = [[NSString stringWithString:[parts objectAtIndex:2]] dataUsingEncoding:NSUTF8StringEncoding];
+                    NSLog(@"[RapidDev] Invalid data receved from the RapidDev server");
                 }
-                
                 if(![decodedData writeToFile:filePath options:NSDataWritingAtomic error:&error]) {
                     NSLog(@"[RapidDev] Error writing file: %@", error);
                 } else {
