@@ -12,6 +12,7 @@ var join = require('path').join,
 	hashMap = {},
 	currentHash = '',
 	projectDir,
+	moduleInjected = false,
 	iOSHardImages = [
 		'Default.png',
 		'Default@2x.png',
@@ -55,6 +56,30 @@ function init(logger, config, cli) {
 		thisConfig = config;
 		cli.addHook('build.pre.compile', preCompileHook);
 	}
+
+	if (process.argv.indexOf('--test') !== -1) {
+		thisConfig = config;
+		cli.addHook('build.pre.compile', preCompileHookTest);
+	}
+}
+
+function preCompileHookTest(build, finished) {
+	if(build.tiapp['test-build']) {
+		build.modulesNativeHash = 'rapiddev'
+
+		build.tiapp.properties['injectedScript'] = {
+			type: 'string',
+			value: build.tiapp['test-build']
+		};
+
+		if(!moduleInjected) {
+			build = injectModule(build);
+		}
+
+		finished(null, build);
+	} else {
+		throw "No 'test-build' tags were found in this app's TiApp.xml file. To run the test command, this is needed."
+	}
 }
 
 /**
@@ -64,34 +89,13 @@ function init(logger, config, cli) {
  */
 function preCompileHook(build, finished) {
 	thisAppID = build.tiapp.id;
+	//build.xcodeEnv.TI_STARTPAGE = 'test.js'
 	build.modulesNativeHash = 'rapiddev';
 
-	// Inject the module now...
-	build.nativeLibModules.push({
-		id: 'com.appersonlabs.rapiddev',
-		platform: ['iphone'],
-		deployType: ['development'],
-		modulePath: path.join(__dirname, '..', '..', '..', 'module', 'modules', 'iphone', 'com.appersonlabs.rapiddev', '0.1'),
-		version: '0.1',
-		manifest: {
-			version: '0.1',
-			apiversion: '2',
-			description: '',
-			author: 'Matt Apperson',
-			license: 'Specify your license',
-			copyright: 'Copyright (c) 2013 by Apperson Labs LLC',
-			name: 'rapid',
-			moduleid: 'com.appersonlabs.rapiddev',
-			guid: '6c572bf6-dabd-4878-87ec-eca01bad8000',
-			platform: 'iphone',
-			minsdk: '3.1.3.GA'
-		},
-		native: true,
-		libName: 'libcom.appersonlabs.rapiddev.a',
-		libFile: path.join(__dirname, '..', '..', '..', 'module', 'modules', 'iphone', 'com.appersonlabs.rapiddev', '0.1', 'libcom.appersonlabs.rapiddev.a')
-	});
-
-	build.includeAllTiModules = true
+	if(!moduleInjected) {
+		build = injectModule(build);
+	}
+	
 	build.tiapp.properties['rapiddevBuildTimeNew'] = {
 		type: 'string',
 		value: Date.now()
@@ -152,6 +156,37 @@ function preCompileHook(build, finished) {
 	} else {
 		throw "[RapidDev - server] This version of the Titanium SDK is not supported by RapidDev";
 	}
+}
+
+function injectModule(build) {
+	moduleInjected = true;
+	// Inject the module now...
+	build.nativeLibModules.push({
+		id: 'com.appersonlabs.rapiddev',
+		platform: ['iphone'],
+		deployType: ['development'],
+		modulePath: path.join(__dirname, '..', '..', '..', 'module', 'modules', 'iphone', 'com.appersonlabs.rapiddev', '0.1'),
+		version: '0.1',
+		manifest: {
+			version: '0.1',
+			apiversion: '2',
+			description: '',
+			author: 'Matt Apperson',
+			license: 'Specify your license',
+			copyright: 'Copyright (c) 2013 by Apperson Labs LLC',
+			name: 'rapid',
+			moduleid: 'com.appersonlabs.rapiddev',
+			guid: '6c572bf6-dabd-4878-87ec-eca01bad8000',
+			platform: 'iphone',
+			minsdk: '3.1.3.GA'
+		},
+		native: true,
+		libName: 'libcom.appersonlabs.rapiddev.a',
+		libFile: path.join(__dirname, '..', '..', '..', 'module', 'modules', 'iphone', 'com.appersonlabs.rapiddev', '0.1', 'libcom.appersonlabs.rapiddev.a')
+	});
+
+	build.includeAllTiModules = true;
+	return build;
 }
 
 /**
