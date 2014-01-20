@@ -40,6 +40,16 @@ We will shortly be adding a studio plugin to make this even easier.
 
 Now to switch back to a non-rapiddev enabled app, build your app as you normaly would without the --rapiddev flag
 
+Running unit tests
+----------------
+As part of RapidDevs "m.o." This is less auto-magical then some other solutions. So maybe you like this maybe you don't. We are open to feedback so raise a ticket if you feel this is too verbose.
+
+To run unit tests using whatever library you want, simply add a "test-build" tag in your TiApp.xml file with a value of a js file in your project.
+This file will then be run when you add the --test flag to your build command. The app that is built will then run the file provided in the test-build tag INSTEAD of app.js! We feel this is important for running clean tests vs running over top of your app.
+This test file can include any testing library you like, and are setup acording to that testing libraries specs as if RapidDev was not being used.
+
+You can run tests with or without the --rapiddev flag. But if you use the 2 together, the tests will auto run for you on every file change in your app!
+
 
 __Some notes and limitations__
 
