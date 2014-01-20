@@ -155,44 +155,46 @@ static int maxConnect = 10;
         NSString* _url = [[TiApp tiAppProperties] stringForKey:@"rapiddevURL"];
         NSString* buildTimeNew = [[TiApp tiAppProperties] stringForKey:@"rapiddevBuildTimeNew"];
         
-// This makes sure the iOS simulator never freaks out over JS/assets not being "in sync" because it always is
-#if !TARGET_IPHONE_SIMULATOR
-        // If the app was just installed/upgraded then clean things up
-        if (defaults && ![buildTimeNew isEqual: @""] && ![buildTimeNew isEqual: buildTime]) {
-#endif
-            NSLog(@"[RapidDev] Clearing RapidDev cache");
-            NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-           
-            NSString *filePath = [documentsDirectory stringByAppendingPathComponent: @"Resources"];
-            BOOL success = [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
-
-            [defaults setObject:buildTimeNew forKey:@"[RapidDev]buildTime"];
-            [defaults setObject:@"" forKey:@"[RapidDev]rapiddevBuildTimeNew"];
-            [defaults setObject:@"" forKey:@"[RapidDev]lastHash"];
-            lastHash = @"";
-
-            [defaults synchronize];
-#if !TARGET_IPHONE_SIMULATOR
-       }
-#endif
-
-        if(!_url) {
-            _url = [NSString stringWithFormat:@"ws://127.0.0.1:8033/%@/iphone/%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"], lastHash];
-        } else {
-            _url = [NSString stringWithFormat:@"ws://%@:8033/%@/iphone/%@", _url, [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"], lastHash];
-        }
-        
-        @try {
-            [TiApp WS: [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: _url]]]];
-            [TiApp WS].delegate = self;
+        if(buildTimeNew) {
             
-            [[TiApp WS] open];
-        }
-        @catch (NSException *exception) {
-            NSLog(@"");
-        }
-    
+    // This makes sure the iOS simulator never freaks out over JS/assets not being "in sync" because it always is
+    #if !TARGET_IPHONE_SIMULATOR
+            // If the app was just installed/upgraded then clean things up
+            if (defaults && ![buildTimeNew isEqual: @""] && ![buildTimeNew isEqual: buildTime]) {
+    #endif
+                NSLog(@"[RapidDev] Clearing RapidDev cache");
+                NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+               
+                NSString *filePath = [documentsDirectory stringByAppendingPathComponent: @"Resources"];
+                BOOL success = [[NSFileManager defaultManager] removeItemAtPath:filePath error:nil];
 
+                [defaults setObject:buildTimeNew forKey:@"[RapidDev]buildTime"];
+                [defaults removeObjectForKey:@"[RapidDev]rapiddevBuildTimeNew"];
+                [defaults removeObjectForKey:@"[RapidDev]lastHash"];
+                lastHash = @"";
+
+                [defaults synchronize];
+    #if !TARGET_IPHONE_SIMULATOR
+           }
+    #endif
+
+            if(!_url) {
+                _url = [NSString stringWithFormat:@"ws://127.0.0.1:8033/%@/iphone/%@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"], lastHash];
+            } else {
+                _url = [NSString stringWithFormat:@"ws://%@:8033/%@/iphone/%@", _url, [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"], lastHash];
+            }
+            
+            @try {
+                [TiApp WS: [[SRWebSocket alloc] initWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: _url]]]];
+                [TiApp WS].delegate = self;
+                
+                [[TiApp WS] open];
+            }
+            @catch (NSException *exception) {
+                NSLog(@"");
+            }
+            
+        }
     }
 }
 +(void)load {
