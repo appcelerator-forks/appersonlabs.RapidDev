@@ -12,7 +12,6 @@
 #import "AppModule.h"
 #import "JRSwizzle.h"
 
-
 @implementation ComAppersonlabsRapiddevModule
 
 static NSString* moduleAssets;

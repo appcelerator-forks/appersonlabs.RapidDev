@@ -11,6 +11,8 @@
 #import "TiApp+globalSocket.h"
 #import "NSString+Base64Additions.h"
 
+#define SYSTEM_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 @implementation KrollBridge (HackedRequire)
 
 static int maxConnect = 10;
@@ -205,6 +207,10 @@ static int maxConnect = 10;
 }
 - (void)hackedboot:(id)callback url:(NSURL*)url_ preload:(NSDictionary*)preload_
 {
+    if(SYSTEM_VERSION_LESS_THAN(@"7.0")) {
+        [self evalJSWithoutResult: @"throw 'RapidDev requires iOS 7.0+ to run correctly.'"];
+    }
+    
     [self hackedboot: callback url: url_ preload: preload_];
     
     if([self respondsToSelector:@selector(reload)]) {

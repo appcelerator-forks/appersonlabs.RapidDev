@@ -1,17 +1,22 @@
+"use strict";
+
 var join = require('path').join,
 	fs = require('fs'),
 	path = require('path'),
 	WebSocketServer = require('ws').Server,
 	network = require('os').networkInterfaces(),
 	chokidar = require('chokidar'),
+	tiapp = require('tiapp'),
 	semver = require('semver'),
 	op = require('openport'),
 	mime = require('mime'),
+	inject = require('ti-inject'),
 	hashdir = require('hashsome/lib/hashdir.js'),
 	connectedDevices = 0,
 	hashMap = {},
 	currentHash = '',
 	projectDir,
+	platform = '',
 	moduleInjected = false,
 	iOSHardImages = [
 		'Default.png',
@@ -32,7 +37,16 @@ var join = require('path').join,
 	],
 	wss,
 	thisAppID,
-	thisConfig;
+	thisConfig,
+	ignoreRegExp,
+	spawnModule = require('child_process').spawn,
+	spawn = function(cmd, args) {
+		if (process.platform === 'win32') {
+			args = ['/c', cmd].concat(args);
+			cmd = process.env.comspec;
+		}
+		return spawnModule(cmd, args);
+	};
 
 exports.cliVersion = '>=3.2.0';
 exports.version = '1.0';
@@ -61,26 +75,53 @@ function init(logger, config, cli) {
 		thisConfig = config;
 		cli.addHook('build.pre.compile', preCompileHookTest);
 	}
+	if (process.argv.indexOf('--test') !== -1 || rocess.argv.indexOf('--rapiddev') !== -1 || process.argv.indexOf('--rapidev') !== -1) {
+		cli.addHook('build.post.compile', function(build, finished) {
+			inject.injectDirectory(join(build.projectDir, 'RapidDev'), build);
+
+			finished()
+		});
+	}
 }
 
 function preCompileHookTest(build, finished) {
-	if(build.tiapp['test-build']) {
+	if (build.tiapp['tests'] !== undefined) {
 		build.modulesNativeHash = 'rapiddev'
 
-		build.tiapp.properties['injectedScript'] = {
-			type: 'string',
-			value: build.tiapp['test-build']
-		};
+		tiapp.find(build.projectDir, function(err, obj) {
 
-		if(!moduleInjected) {
-			build = injectModule(build);
-		}
+			var tests = obj.obj['ti:app'].tests[0],
+				script = 'app.js';
 
-		finished(null, build);
+			var testName = process.argv[process.argv.indexOf('--test') + 1];
+			if (!tests[testName]) testName = 'default';
+
+			if (typeof tests[testName][0] === 'string') {
+				script = tests[testName][0];
+			} else if (typeof tests[testName][0] === 'object') {
+				script = tests[testName][0]['_'];
+			} else {
+				throw "No '" + process.argv[process.argv.indexOf('--test') + 1] + "' test was found, nether was 'default'"
+			}
+
+			build.tiapp.properties['injectedScript'] = {
+				type: 'string',
+				value: script
+			};
+
+			if (!moduleInjected) {
+				build = injectModule(build);
+			}
+
+			finished(null, build);
+
+		});
 	} else {
-		throw "No 'test-build' tags were found in this app's TiApp.xml file. To run the test command, this is needed."
+		throw "No 'tests' tag was found in this app's TiApp.xml file. To run the test command, this is needed."
 	}
 }
+
+
 
 /**
  * [preCompileHook description]
@@ -89,13 +130,15 @@ function preCompileHookTest(build, finished) {
  */
 function preCompileHook(build, finished) {
 	thisAppID = build.tiapp.id;
+	platform = 'ios';
+
 	//build.xcodeEnv.TI_STARTPAGE = 'test.js'
 	build.modulesNativeHash = 'rapiddev';
 
-	if(!moduleInjected) {
+	if (!moduleInjected) {
 		build = injectModule(build);
 	}
-	
+
 	build.tiapp.properties['rapiddevBuildTimeNew'] = {
 		type: 'string',
 		value: Date.now()
@@ -133,6 +176,9 @@ function preCompileHook(build, finished) {
 			hashdir(join(projectDir, 'Resources'), function(err, results) {
 				currentHash = results.hash;
 
+				if (fs.existsSync(join(projectDir, 'app'))) {
+					chokidar.watch(join(projectDir, 'app'), config).on('all', onAlloyFSChange);
+				}
 				chokidar.watch(join(projectDir, 'Resources'), config).on('all', onFilesystemChange);
 
 				console.log('--------------------------------------------------------------------');
@@ -208,45 +254,61 @@ function broadcast(data, platform) {
 	}
 }
 
+function onAlloyFSChange(ev, path) {
+	console.log("Compiling Alloy for " + platform);
+	var alloy_command = spawn('alloy', ['compile', '-b', '-l', '1', '--platform', platform, '--config', 'sourcemap=false']);
+	alloy_command.stderr.pipe(process.stderr);
+	alloy_command.on("exit", function(code) {
+		if (code !== 0) {
+			console.log("Alloy compile error\n");
+		} else {
+			console.log('Alloy compile finished')
+		}
+	});
+	alloy_command.on("error", function() {
+		console.log("Alloy compile error\n");
+	});
+}
+
 /**
  * [onFilesystemChange description]
  * @param  {String} ev - The event type
  * @param  {String} path - The path of the file that changes
  */
 function onFilesystemChange(ev, path) {
-	(function(ev, path) {
-		var localPath = path.substr(path.indexOf('Resources'));
-		var platform;
-
-		hashdir(join(projectDir, 'Resources'), function(err, results) {
-			currentHash = results.hash;
-			if (localPath.indexOf('Resources/iphone/') !== -1) {
-				if (iOSHardImages.some(function(v) {
-					return localPath.indexOf(v) >= 0;
-				})) {
-					return;
-				}
-				platform = 'iphone';
-				localPath = localPath.replace('Resources/iphone/', 'Resources/');
+	var localPath = path.substr(path.indexOf('Resources'));
+	var platform;
+	console.log('called')
+	hashdir(join(projectDir, 'Resources'), function(err, results) {
+		currentHash = results.hash;
+		if (localPath.indexOf('Resources/iphone/') !== -1) {
+			if (iOSHardImages.some(function(v) {
+				return localPath.indexOf(v) >= 0;
+			})) {
+				return;
 			}
-			// if(localPath.indexOf('Resources/android/') !== -1) {
-			// 	if (androidHardImages.some(function(v) { return localPath.indexOf(v) >= 0; })) {
-			// 	    return;
-			// 	}
-			// 	platform = 'android';
-			// 	localPath = localPath.replace('Resources/iphone/', 'Resources/');
-			// }
+			platform = 'iphone';
+			localPath = localPath.replace('Resources/iphone/', 'Resources/');
+		}
+		// if(localPath.indexOf('Resources/android/') !== -1) {
+		// 	if (androidHardImages.some(function(v) { return localPath.indexOf(v) >= 0; })) {
+		// 	    return;
+		// 	}
+		// 	platform = 'android';
+		// 	localPath = localPath.replace('Resources/iphone/', 'Resources/');
+		// }
+		console.log('sent ' + ev)
 
-			if (ev === ('unlink' || 'unlinkDir')) {
-				wss.broadcast('remove-file' + '|' + localPath + '|' + currentHash);
-			} else {
-				var data = fs.readFileSync(path);
-				data = new Buffer(data).toString('base64');
 
-				wss.broadcast('update-file' + '|' + localPath + '|' + data + '|' + currentHash);
-			}
-		});
-	})(ev, path);
+		if (ev === ('unlink' || 'unlinkDir')) {
+			wss.broadcast('remove-file' + '|' + localPath + '|' + currentHash);
+		} else {
+			var data = fs.readFileSync(path);
+			data = new Buffer(data).toString('base64');
+
+			wss.broadcast('update-file' + '|' + localPath + '|' + data + '|' + currentHash);
+		}
+	});
 }
 
 /**
@@ -311,7 +373,7 @@ function getIp() {
 		var inter = network[k]
 		for (var j in inter)
 			if (inter[j].family === 'IPv4' && !inter[j].internal) {
-				return inter[j].address
+				return inter[j].address;
 			}
 	}
 }
