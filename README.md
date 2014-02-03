@@ -52,7 +52,7 @@ To run unit tests using whatever library you want, simply add a "tests" tag in y
 
 ```
     <tests>
-        <default runAppJS="true">/tests/app_test.js</default>
+        <default>/tests/app_test.js</default>
         <login>/tests/login.js</login>
     </tests>
 ```
