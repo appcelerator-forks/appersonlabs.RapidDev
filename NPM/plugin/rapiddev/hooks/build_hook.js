@@ -75,7 +75,7 @@ function init(logger, config, cli) {
 		thisConfig = config;
 		cli.addHook('build.pre.compile', preCompileHookTest);
 	}
-	if (process.argv.indexOf('--test') !== -1 || rocess.argv.indexOf('--rapiddev') !== -1 || process.argv.indexOf('--rapidev') !== -1) {
+	if (process.argv.indexOf('--test') !== -1 || process.argv.indexOf('--rapiddev') !== -1 || process.argv.indexOf('--rapidev') !== -1) {
 		cli.addHook('build.post.compile', function(build, finished) {
 			inject.injectDirectory(join(build.projectDir, 'RapidDev'), build);
 
