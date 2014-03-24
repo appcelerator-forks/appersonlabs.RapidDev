@@ -18,7 +18,6 @@
   },  "license": "Apache 2",
   "dependencies": {
     "commander": "~2.1.0",
-    "execSync": "~1.0.1-pre",
     "pkginfo": "~0.3.0",
     "chokidar": "~0.8.1",
     "hashsome": "~0.1.0",
