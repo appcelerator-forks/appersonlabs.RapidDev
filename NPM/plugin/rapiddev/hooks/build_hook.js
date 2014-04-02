@@ -50,7 +50,6 @@ var join = require('path').join,
 
 exports.cliVersion = '>=3.2.0';
 exports.version = '1.0';
-
 exports.init = init;
 
 /**
@@ -64,6 +63,7 @@ function init(logger, config, cli) {
 	// cli.addHook('build.pre.construct', function(build, finished) {
 	// 	console.log(build);
 	// });
+	cli.config.cli.failOnWrongSDK = true
 
 	// including "rapidev" because even we misspell this sometimes :(
 	if (process.argv.indexOf('--rapiddev') !== -1 || process.argv.indexOf('--rapidev') !== -1) {
