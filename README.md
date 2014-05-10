@@ -42,7 +42,7 @@ Now to switch back to a non-rapiddev enabled app, build your app as you normaly 
 
 Development Files
 ----------------
-In your app's project root, you can create a directory called `RapidDev`. The contents of this directory will be copied into your build whenever you are using the `--rapiddev`, or `--test` flags. This of this as Titaniums platform directories, but just for development. This is perfect for unit test files that should never end up in a production app.
+In your app's project root, you can create a directory called `Development`. The contents of this directory will be copied into your build whenever you are using the `--rapiddev`, or `--test` flags. This of this as Titaniums platform directories, but just for development. This is perfect for unit test files that should never end up in a production app.
 
 Running unit tests
 ----------------

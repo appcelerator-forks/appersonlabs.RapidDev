@@ -77,7 +77,7 @@ function init(logger, config, cli) {
 	}
 	if (process.argv.indexOf('--test') !== -1 || process.argv.indexOf('--rapiddev') !== -1 || process.argv.indexOf('--rapidev') !== -1) {
 		cli.addHook('build.post.compile', function(build, finished) {
-			inject.injectDirectory(join(build.projectDir, 'RapidDev'), build);
+			inject.injectDirectory(join(build.projectDir, 'Development'), build);
 
 			finished()
 		});
@@ -180,6 +180,8 @@ function preCompileHook(build, finished) {
 					chokidar.watch(join(projectDir, 'app'), config).on('all', onAlloyFSChange);
 				}
 				chokidar.watch(join(projectDir, 'Resources'), config).on('all', onFilesystemChange);
+				chokidar.watch(join(projectDir, 'Development'), config).on('all', onFilesystemChange);
+
 
 				console.log('--------------------------------------------------------------------');
 				console.log("______            _     _______           ");
@@ -276,9 +278,10 @@ function onAlloyFSChange(ev, path) {
  * @param  {String} path - The path of the file that changes
  */
 function onFilesystemChange(ev, path) {
+
 	var localPath = path.substr(path.indexOf('Resources'));
 	var platform;
-	console.log('called')
+
 	hashdir(join(projectDir, 'Resources'), function(err, results) {
 		currentHash = results.hash;
 		if (localPath.indexOf('Resources/iphone/') !== -1) {
