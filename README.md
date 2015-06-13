@@ -1,6 +1,8 @@
 RapidDev
 ========
 
+## THIS PROJECT IS NO LONGER SUPPORTED, WE RECOMMEND LIVE-VIEW ON THE APPC PLATFORM
+
 Rapid dev is a system of a native Titanium module, a build plugin, and a NodeJS socket server for Titanium mobile to allow for real time code reloads the moment the local file system of your machine takes place.
 
 The primary goal of this project is to allow for the above functions without any extra compile step or manual changes on the users part that would alter the JS code of their application. This project does not in any way inject JS code, mutate it, remove it or in any way affect it.
